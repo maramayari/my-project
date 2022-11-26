@@ -21,7 +21,7 @@ jobs:
           python-version: '3.x'
           
       - name: Build the Docker image
-        working-directory: my-project
+        working-directory: coinmarketapp
         run: docker build . --file Dockefile --tag mayariimage:$(date +%s)
 
       - name: Push Docker Image to Docker Hub
