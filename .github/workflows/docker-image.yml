@@ -20,8 +20,12 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           python-version: '3.x'
           
-      - name: Build the Docker image
-        run: docker build . --file Dockefile --tag maramayari/mayariimage:$(date +%s)
+      - name: Build and export
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          tags: maramayari/mayari:${GITHUB_SHA::8}
+          outputs: type=docker,dest=/tmp/docker-s2-python.tar
 
       - name: Push Docker Image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME}}/mayari:${GITHUB_SHA::8}
