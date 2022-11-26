@@ -21,7 +21,6 @@ jobs:
           python-version: '3.x'
           
       - name: Build the Docker image
-        working-directory: my-project
         run: docker build . --file Dockefile --tag mayari_image:${GITHUB_SHA::8}
 
       - name: Push Docker Image to Docker Hub
