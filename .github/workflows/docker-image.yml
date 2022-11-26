@@ -21,7 +21,7 @@ jobs:
           python-version: '3.x'
           
       - name: Build the Docker image 
-        run: docker build . --file Dockefile --tag maramayari/mayari:${GITHUB_SHA::8}
+        run: docker build . --file Dockefile --tag maramayari/image_docker:${GITHUB_SHA::8}
 
       - name: Push Docker Image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME}}/maramayari/my-project:${GITHUB_SHA::8}
+        run: docker push ${{ secrets.DOCKER_USERNAME}}/maramayari/image_docker_hub:${GITHUB_SHA::8}
