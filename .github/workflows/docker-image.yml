@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/mayari
+        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/mayari:${GITHUB_SHA::8}
 
       - name: Push Docker Image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME}}/mayari:${GITHUB_SHA::8}
